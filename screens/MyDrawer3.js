@@ -1,8 +1,10 @@
 import React from 'react'
-import { Button, Image,View,Text, StyleSheet} from 'react-native';
+import { Button, Image,View,Text, ScrollView, StyleSheet} from 'react-native';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from './Tvpage';
+import TVShows from './TVShows'
 import Header from './Header';
+
 
 class MyHomeScreen extends React.Component {
 
@@ -25,14 +27,12 @@ class MyHomeScreen extends React.Component {
      return (
 
       <View>
-    
-       
       <HomeScreen openDrawer = {
            this.props.navigation.openDrawer
          }/>
-         <Text>Third home Screen</Text>
-
-
+        <ScrollView style={{marginBottom: 200}}>
+          <TVShows/>
+        </ScrollView>
          </View>
        
      );

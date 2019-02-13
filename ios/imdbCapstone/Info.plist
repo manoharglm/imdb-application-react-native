@@ -54,7 +54,6 @@
 		</dict>
 	</dict>
 	<key>UIAppFonts</key>
-<<<<<<< HEAD
 	<array>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
@@ -72,8 +71,6 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
-=======
 	<array/>
->>>>>>> harish
 </dict>
 </plist>

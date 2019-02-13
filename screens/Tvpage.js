@@ -6,6 +6,8 @@ import {
 import SearchHeader from 'react-native-search-header';
 import { Header , Icon} from 'react-native-elements';
 import LogoImage from './logoIcon';
+import Movies from './Movies'
+
 
 export default class App extends React.Component {
     constructor(props) {
@@ -48,7 +50,7 @@ export default class App extends React.Component {
                     }
                 />
                 
-                {/* <HomePageContent /> */}
+                <Movies />
                 
 
                 < SearchHeader 

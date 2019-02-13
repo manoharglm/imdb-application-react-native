@@ -3,13 +3,9 @@ import { ScrollView, View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import YouTube from 'react-native-youtube'
 
-import {
-    trendingMovies, trendingTv, trendingCelebs,
-    inTheatres, comingSoon, getMovieDetail, getMovieVideo, getMovieCredits,
-    getTvDetail, getTvVideo, getTvCredits, getPerson, getFilmography
-} from '../store/actions'
+import {getTvDetail, getTvVideo, getTvCredits} from '../store/actions'
 
-class Home extends Component {
+class TvShows extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -17,29 +13,15 @@ class Home extends Component {
         }
     }
     componentDidMount() {
-        let movieId = 244786
-        let pId = 287
         let tvId = 1396
-        this.props.trendingMovies()
-        this.props.trendingCelebs()
-        this.props.trendingTv()
-        this.props.comingSoon()
-        this.props.inTheatres()
-
-        // this.props.getMovieDetail(movieId)
-        // this.props.getMovieVideo(movieId)
-        // this.props.getMovieCredits(movieId)
 
         this.props.getTvDetail(tvId)
         this.props.getTvVideo(tvId)
         this.props.getTvCredits(tvId)
-
-        // this.props.getPerson(pId)
-        // this.props.getFilmography(pId)
     }
     render() {
-        const { InTheatres, TrendingCelebs, TrendingMovies, TrendingTv, ComingSoon, details } = this.props
-        if (ComingSoon && details.credits && details.video && details.detail) {
+        const { details } = this.props
+        if (details.credits && details.video && details.detail) {
             return (
                 <ScrollView style={{ backgroundColor: "black" }}>
                     <YouTube
@@ -108,27 +90,12 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
     details: state.details,
-    InTheatres: state.trendingData.inTheatres,
-    TrendingMovies: state.trendingData.trendingMovies,
-    TrendingTv: state.trendingData.trendingTv,
-    TrendingCelebs: state.trendingData.trendingCelebs,
-    ComingSoon: state.trendingData.comingSoon
 })
 const mapDispatchToProps = dispatch => ({
-    trendingMovies: () => dispatch(trendingMovies()),
-    trendingTv: () => dispatch(trendingTv()),
-    trendingCelebs: () => dispatch(trendingCelebs()),
-    comingSoon: () => dispatch(comingSoon()),
-    inTheatres: () => dispatch(inTheatres()),
-
-    getMovieDetail: (id) => dispatch(getMovieDetail(id)),
-    getMovieVideo: (id) => dispatch(getMovieVideo(id)),
-    getMovieCredits: (id) => dispatch(getMovieCredits(id)),
     getTvDetail: (id) => dispatch(getTvDetail(id)),
     getTvVideo: (id) => dispatch(getTvVideo(id)),
     getTvCredits: (id) => dispatch(getTvCredits(id)),
-    getPerson: (id) => dispatch(getPerson(id)),
-    getFilmography: (id) => dispatch(getFilmography(id))
+
 
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(TvShows);

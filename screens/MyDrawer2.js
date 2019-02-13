@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Image,View,Text, StyleSheet} from 'react-native';
+import { Button, Image,View,Text, ScrollView, StyleSheet} from 'react-native';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from './Moviespage';
 import Header from './Header';
+import Movies from './Movies'
 class MyHomeScreen extends React.Component {
 
   constructor(props){
@@ -28,9 +29,9 @@ class MyHomeScreen extends React.Component {
           <HomeScreen openDrawer = {
            this.props.navigation.openDrawer
          } />
-         <Text>Second Home Screen</Text>
-
-          
+       {/* <ScrollView style={{marginBottom: 200}}>
+       <Movies/>
+       </ScrollView> */}
       </View>
        
      );
