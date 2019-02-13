@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 
-import { trendingMovies, trendingTv, trendingCelebs, inTheatres, comingSoon } from '../store/actions'
+
+import { trendingMovies, trendingTv, trendingCelebs, inTheatres, comingSoon,} from '../store/actions'
 
 class Home extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+
+        }
     }
     componentDidMount() {
         this.props.trendingMovies()
@@ -16,17 +20,10 @@ class Home extends Component {
         this.props.inTheatres()
     }
     render() {
-        const { InTheatres, TrendingCelebs, TrendingMovies, TrendingTv, ComingSoon } = this.props
+        const { InTheatres, TrendingCelebs, TrendingMovies, TrendingTv, ComingSoon, details } = this.props
         if (ComingSoon) {
             return (
-                <ScrollView>
-                    <Text>Got it</Text>
-                    {ComingSoon.map(movie => (
-                        <View key={movie.id}>
-                            <Text>{movie['title']}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
+                <View></View>
             )
         }
         else return (
@@ -47,6 +44,6 @@ const mapDispatchToProps = dispatch => ({
     trendingTv: () => dispatch(trendingTv()),
     trendingCelebs: () => dispatch(trendingCelebs()),
     comingSoon: () => dispatch(comingSoon()),
-    inTheatres: () => dispatch(inTheatres())
+    inTheatres: () => dispatch(inTheatres()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
