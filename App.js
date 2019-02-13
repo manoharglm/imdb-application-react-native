@@ -3,12 +3,14 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import store from './store';
 import Home from './screens/Home';
+// import FirstScreen from './screens/FirstScreen';
 import { Provider } from 'react-redux'
+import FirstScreen from './screens/FirstScreen';
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Home/>
+        <FirstScreen />
       </Provider>
     );
   }
