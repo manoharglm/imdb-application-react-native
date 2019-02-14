@@ -3,6 +3,9 @@ import { Button, Image,View,Text, StyleSheet} from 'react-native';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from './Homepage';
 import Header from './Header';
+import UserProfile from './UserProfile'
+import { ScrollView } from 'react-native-gesture-handler';
+
 class MyHomeScreen extends React.Component {
 
   constructor(props){
@@ -49,21 +52,7 @@ class MyHomeScreen extends React.Component {
 
    render() {
      return (
-       <View>
-         
-         < Header openDrawer = {
-           this.props.navigation.openDrawer
-         }
-         />
-         <Text>First Profile Screen</Text>
-
-          <Button
-         onPress={() => this.props.navigation.goBack()}
-         title="Go back home"
-       />
-
-       </View>
-      
+        <UserProfile openDrawer={this.props.navigation.openDrawer}/>
      );
    }
  }
