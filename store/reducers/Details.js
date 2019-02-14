@@ -12,34 +12,10 @@ export const details = (state = [], action) => {
                 movieDetail: action.results
             }
 
-        case 'GET_MOVIE_VIDEO':
-            return {
-                ...state,
-                movieVideo: action.results
-            }
-
-        case 'MOVIE_CREDITS':
-            return {
-                ...state,
-                movieCredits: action.results
-            }
-
         case 'GET_TV':
             return {
                 ...state,
                 TvDetail: action.results
-            }
-
-        case 'GET_TV_VIDEO':
-            return {
-                ...state,
-                TvVideo: action.results
-            }
-
-        case 'TV_CREDITS':
-            return {
-                ...state,
-                TvCredits: action.results
             }
 
         case 'GET_FILMOGRAPHY':
