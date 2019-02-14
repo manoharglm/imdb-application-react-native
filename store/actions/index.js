@@ -97,11 +97,22 @@ export const getFilmography = (personId) => dispatch => {
 }
 
 export const topMovies = () => dispatch => {
-  fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apikey}&token=${token}`)
+  fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apikey}&token=${token}`)
     .then(res => res.json())
     .then(results =>
       dispatch({
         type: 'TOP_MOVIES',
+        results: results['results']
+      })
+    );
+};
+
+export const topTv = () => dispatch => {
+  fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${apikey}&token=${token}`)
+    .then(res => res.json())
+    .then(results =>
+      dispatch({
+        type: 'TOP_TV',
         results: results['results']
       })
     );

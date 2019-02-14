@@ -7,20 +7,7 @@ import {
     Text
 } from 'react-native';
 const BannerWidth = Dimensions.get('window').width;
-const BannerHeight = 260;
-
-
-// const images = [
-//     "http://aboutreact.com/wp-content/uploads/2018/08/train_ticket_booking.png",
-//     "http://aboutreact.com/wp-content/uploads/2018/08/bus_ticket_booking.png",
-//     "http://aboutreact.com/wp-content/uploads/2018/08/best_deals1.png",
-//     "http://aboutreact.com/wp-content/uploads/2018/08/discount1.png",
-//     "https://theeastvision.info/wp-content/uploads/2018/04/black-panther.jpg",
-//     "http://aboutreact.com/wp-content/uploads/2018/08/flight_ticket_booking.png",
-//     "http://img.qdaily.com/article/banner/20170801113352Nruq7ySUiAh8e3L1.jpg?imageMogr2/auto-orient/thumbnail/!640x380r/gravity/Center/crop/640x380/quality/85/format/jpg/ignore-error/1",
-//     "http://img.qdaily.com/article/banner/201707312210334UMcDGil9SnKWh1o.jpg?imageMogr2/auto-orient/thumbnail/!640x380r/gravity/Center/crop/640x380/quality/85/format/jpg/ignore-error/1",
-//     "http://img.qdaily.com/article/banner/20170731145444Awq5zJK7Tok2sC3V.jpg?imageMogr2/auto-orient/thumbnail/!640x380r/gravity/Center/crop/640x380/quality/85/format/jpg/ignore-error/1"
-// ];
+const BannerHeight = 240;
 
 
 class CarouselPage extends Component {
