@@ -1,12 +1,12 @@
 import React from 'react';
 import {
     StyleSheet,
-    View
+    View, ScrollView
 } from 'react-native';
 import SearchHeader from 'react-native-search-header';
-// import HomePageContent from './HomePageContent';
-import { Header , Icon} from 'react-native-elements';
+import { Header, Icon} from 'react-native-elements';
 import LogoImage from './logoIcon';
+import Movies from './Movies';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -15,28 +15,28 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Header  style={{display:"flex", alignContent:"center"}}
+            <ScrollView style={styles.container}>
+                <Header style={{ display: "flex", alignContent: "center" }}
                     leftComponent={
-                        <Icon 
-                        name="menu"
-                         color="white"
-                         size = {32}
+                        <Icon
+                            name="menu"
+                            color="white"
+                            size={32}
                             onPress={
                                 () => this.props.openDrawer()
-                            }/>
+                            } />
                     }
                     centerComponent={<LogoImage />}
                     rightComponent={
-                          < Icon name = "search"
-                          color = "white"
-                          size = {
-                              32
-                          }
-                          onPress = {
-                              () => this.searchHeader.show()
-                          }
-                          />
+                        < Icon name="search"
+                            color="white"
+                            size={
+                                32
+                            }
+                            onPress={
+                                () => this.searchHeader.show()
+                            }
+                        />
 
                     }
 
@@ -48,11 +48,9 @@ export default class App extends React.Component {
                         }
                     }
                 />
-                
-                {/* <HomePageContent /> */}
-                
+                    <Movies/>
 
-                < SearchHeader 
+                < SearchHeader
                     ref={
                         (searchHeader) => {
                             this.searchHeader = searchHeader;
@@ -80,7 +78,7 @@ export default class App extends React.Component {
                     }
 
                 />
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -98,8 +96,7 @@ const styles = StyleSheet.create({
     header: {
 
     },
-    scrollView:{
-        marginBottom:50
+    scrollView: {
     },
     card: {
         padding: 10

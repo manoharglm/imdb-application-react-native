@@ -73,7 +73,7 @@ export const getMovieVideo = (movieId) => dispatch => {
     .then(results =>
       dispatch({
         type: "GET_MOVIE_VIDEO",
-        results
+        results : results.results 
       })
     )
 };
@@ -106,7 +106,7 @@ export const getTvVideo = (tvId) => dispatch => {
     .then(results =>
       dispatch({
         type: "GET_TV_VIDEO",
-        results
+        results : results.results 
       })
     )
 }

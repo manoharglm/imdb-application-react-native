@@ -3,49 +3,49 @@ export const details = (state = [], action) => {
         case "GET_PERSON":
             return {
                 ...state,
-                detail: action.results
+                person: action.results
             }
 
         case 'GET_MOVIE':
             return {
                 ...state,
-                detail: action.results
+                movieDetail: action.results
             }
 
         case 'GET_MOVIE_VIDEO':
             return {
                 ...state,
-                video: action.results
+                movieVideo: action.results
             }
 
         case 'MOVIE_CREDITS':
             return {
                 ...state,
-                credits: action.results
+                movieCredits: action.results
             }
 
         case 'GET_TV':
             return {
                 ...state,
-                detail: action.results
+                TvDetail: action.results
             }
 
         case 'GET_TV_VIDEO':
             return {
                 ...state,
-                video: action.results
+                TvVideo: action.results
             }
 
         case 'TV_CREDITS':
             return {
                 ...state,
-                credits: action.results
+                TvCredits: action.results
             }
 
         case 'GET_FILMOGRAPHY':
             return {
                 ...state,
-                films: action.results
+                personFilms: action.results
             }
 
         default:

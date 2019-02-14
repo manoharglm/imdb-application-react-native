@@ -30,9 +30,6 @@ class MyHomeScreen extends React.Component {
       <HomeScreen openDrawer = {
            this.props.navigation.openDrawer
          }/>
-        <ScrollView style={{marginBottom: 200}}>
-          <TVShows/>
-        </ScrollView>
          </View>
        
      );

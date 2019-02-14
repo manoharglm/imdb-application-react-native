@@ -6,7 +6,8 @@ import {
 import SearchHeader from 'react-native-search-header';
 import { Header , Icon} from 'react-native-elements';
 import LogoImage from './logoIcon';
-import Movies from './Movies'
+import TVShows from './TVShows'
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default class App extends React.Component {
@@ -49,8 +50,8 @@ export default class App extends React.Component {
                         }
                     }
                 />
+                <TVShows />
                 
-                <Movies />
                 
 
                 < SearchHeader 
@@ -89,6 +90,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#1E1C1C',
+        marginBottom:120
     },
     textArea: {
         marginTop: 20,
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
 
     },
     scrollView:{
-        marginBottom:50
+       
     },
     card: {
         padding: 10

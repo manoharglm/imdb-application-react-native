@@ -29,9 +29,6 @@ class MyHomeScreen extends React.Component {
           <HomeScreen openDrawer = {
            this.props.navigation.openDrawer
          } />
-       {/* <ScrollView style={{marginBottom: 200}}>
-       <Movies/>
-       </ScrollView> */}
       </View>
        
      );
@@ -59,9 +56,6 @@ class MyHomeScreen extends React.Component {
            this.props.navigation.openDrawer
          }
          />
-
-         <Text>Second Profile Screen</Text>
-
           <Button
          onPress={() => this.props.navigation.goBack()}
          title="Go back home"

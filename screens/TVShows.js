@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, Image } from 'react-native';
+import { ScrollView, View, WebView,Dimensions, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import YouTube from 'react-native-youtube'
 
@@ -21,11 +21,11 @@ class TvShows extends Component {
     }
     render() {
         const { details } = this.props
-        if (details.credits && details.video && details.detail) {
+        if (details.TvCredits && details.TvVideo && details.TvDetail) {
             return (
                 <ScrollView style={{ backgroundColor: "black" }}>
-                    <YouTube
-                        videoId={details.video.results[0]['key']}  // The YouTube video ID
+                    {/* <YouTube
+                        videoId={details.TvVideo[0]['key']}  // The YouTube video ID
                         play={false}             // control playback of video with true/false
                         inline={true}       // control whether the video should play in fullscreen or inline
                         loop={true}             // control whether the video should loop when ended
@@ -37,14 +37,17 @@ class TvShows extends Component {
                         onError={e => this.setState({ error: e.error })}
 
                         style={{ alignSelf: 'stretch', height: 250 }}
+                    /> */}
+                                      <WebView 
+                        source={{uri : `https://www.youtube.com/embed/${details.TvVideo[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
+                        style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
                     />
                     <ScrollView >
-                        {/* <Text>{JSON.stringify(details.credits)}</Text> */}
                         <ScrollView style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    {details.credits.map(cast => {
+                                    {details.TvCredits.map(cast => {
                                         return <View key={cast.id} style={{ margin: 12 }} >
                                             <Image style={{ width: 100, height: 100 }} 
                                             source={{ uri: `https://image.tmdb.org/t/p/w200/${cast['profile_path']}` }} />
@@ -57,17 +60,17 @@ class TvShows extends Component {
                         </ScrollView>
                         <View style={{ margin: 12 }}>
                             <View style={{display: "flex", flexDirection : "row", justifyContent : "space-between"}}>
-                                <Text style={{ color: "white" }}>{details.detail.title}{details.detail.name}</Text>
-                                <Text style={{ color: "white" }}> Rating : {details.detail.vote_average}</Text>
+                                <Text style={{ color: "white" }}>{details.TvDetail.name}</Text>
+                                <Text style={{ color: "white" }}> Rating : {details.TvDetail.vote_average}</Text>
                             </View>
-                            <Text style={{ color: "grey", marginTop: 6 }}>{details.detail.overview}</Text>
+                            <Text style={{ color: "grey", marginTop: 6 }}>{details.TvDetail.overview}</Text>
                         </View>
-                        {details.detail.seasons ? 
+                        {details.TvDetail.seasons ? 
                         <ScrollView style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>Seasons</Text>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    {details.detail.seasons.map(season => {
+                                    {details.TvDetail.seasons.map(season => {
                                         return <View key={season.id} style={{ margin: 8 }}>
                                             <Image style={{ width: 100, height: 100 }} 
                                             source={{ uri: `https://image.tmdb.org/t/p/w200/${season['poster_path']}` }} />
@@ -80,10 +83,10 @@ class TvShows extends Component {
                         </ScrollView> : null}
                     </ScrollView>
                 </ScrollView>
-            )
-        }
+             )
+         }
         else return (
-            <Text>Loading......</Text>
+            <Text>Loading....</Text>
         )
     }
 }
