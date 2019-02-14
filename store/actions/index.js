@@ -57,7 +57,7 @@ export const inTheatres = () => dispatch => {
 };
 
 export const getMovieDetail = (movieId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US&token=${token}`)
+  fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&append_to_response=videos,images,credits`)
     .then(res => res.json())
     .then(results =>
       dispatch({
@@ -67,30 +67,8 @@ export const getMovieDetail = (movieId) => dispatch => {
     )
 };
 
-export const getMovieVideo = (movieId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apikey}&language=en-US&token=${token}`)
-    .then(res => res.json())
-    .then(results =>
-      dispatch({
-        type: "GET_MOVIE_VIDEO",
-        results : results.results 
-      })
-    )
-};
-
-export const getMovieCredits = (movieId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apikey}&language=en-US&token=${token}`)
-    .then(res => res.json())
-    .then(results =>
-      dispatch({
-        type: "MOVIE_CREDITS",
-        results : results['cast']
-      })
-    )
-};
-
 export const getTvDetail = (tvId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apikey}&language=en-US&token=${token}`)
+  fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apikey}&append_to_response=videos,images,credits`)
     .then(res => res.json())
     .then(results => {
       dispatch({
@@ -98,28 +76,6 @@ export const getTvDetail = (tvId) => dispatch => {
         results
       })
     })
-};
-
-export const getTvVideo = (tvId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${apikey}&language=en-US&token=${token}`)
-    .then(res => res.json())
-    .then(results =>
-      dispatch({
-        type: "GET_TV_VIDEO",
-        results : results.results 
-      })
-    )
-}
-
-export const getTvCredits = (tvId) => dispatch => {
-  fetch(`https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${apikey}&language=en-US&token=${token}`)
-    .then(res => res.json())
-    .then(results =>
-      dispatch({
-        type: "TV_CREDITS",
-        results : results['cast']
-      })
-    )
 };
 
 export const getPerson = (personId) => dispatch => {
@@ -139,3 +95,14 @@ export const getFilmography = (personId) => dispatch => {
       results: results['cast'].slice(0, 10)
     }))
 }
+
+export const topMovies = () => dispatch => {
+  fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apikey}&token=${token}`)
+    .then(res => res.json())
+    .then(results =>
+      dispatch({
+        type: 'TOP_MOVIES',
+        results: results['results']
+      })
+    );
+};
