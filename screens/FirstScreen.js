@@ -1,13 +1,15 @@
 import React from 'react';
 import {
-  Text,
   Image,
   StyleSheet
 } from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import MyDrawer from './MyDrawer';
-import MyDrawer2 from './MyDrawer2';
-import MyDrawer3 from './MyDrawer3';
+
+import StackNavigation from './StackNav';
+import StackNavigation2 from './StackNav2';
+import StackNavigation3 from './StackNav3';
+
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
      tabBarIcon: ({ tintColor }) => (
@@ -19,8 +21,7 @@ class HomeScreen extends React.Component {
    };
   render() {
     return (
-      // <Text>FirstScreen</Text>
-      <MyDrawer />
+      <StackNavigation />
     );
   }
 }
@@ -39,11 +40,7 @@ class Movie extends React.Component {
      ),
    };
   render() {
-    return (
-      // <Text>Second Screen</Text>
-        <MyDrawer2 type={"movieScreen"}/>
-      
-    );
+    return (<StackNavigation2 />);
   }
 }
 
@@ -62,10 +59,7 @@ class Tv extends React.Component {
    };
   render() {
     return (
-
-      // <Text>Third Screen</Text>
-         <MyDrawer3 type={"tvScreen"}/>
-      
+      <StackNavigation3 />
     );
   }
 }

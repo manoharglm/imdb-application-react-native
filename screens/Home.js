@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet, Image } from 'react-native';
+import { ScrollView, View, Text ,StyleSheet,Image, TouchableOpacity,ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import CarouselPage from './CarouselPage';
 import Card from './Card';
 import CelebsCard from './CelebsCard';
-
-
-import { trendingMovies, trendingTv, trendingCelebs, inTheatres, comingSoon, } from '../store/actions'
+import { trendingMovies, trendingTv, trendingCelebs, inTheatres, comingSoon } from '../store/actions';
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-
-        }
     }
+     static navigationOptions = {
+         header: null
+     }
+
     componentDidMount() {
         this.props.trendingMovies()
         this.props.trendingCelebs()
@@ -25,48 +24,113 @@ class Home extends Component {
     render() {
         const { InTheatres, TrendingCelebs, TrendingMovies, TrendingTv, ComingSoon } = this.props;
 
+
+
+
         if (TrendingMovies && InTheatres && TrendingCelebs && TrendingTv && ComingSoon) {
 
-            let trendingMoviesImage = [];
+        let trendingMoviesImage = [];
 
-            TrendingMovies.reduce(function (acc, x) {
-                trendingMoviesImage.push(x.backdrop_path);
-                return (acc);
-            }, [])
+        let image = TrendingMovies.reduce(function (acc, x) {
+            trendingMoviesImage.push(x.backdrop_path);
+            return (acc);
+        }, [])
 
 
-            return (
+            return (  
+
                 <View style={styles.container}>
-                    <ScrollView style={styles.scrollView}>
-                        < CarouselPage image={trendingMoviesImage} />
+                 <View style={styles.images}>
 
-                        <Text style={styles.textArea}>Trending Movies</Text>
-                        <Card data={TrendingMovies} />
+                 <TouchableOpacity onPress = {
+                     () => this.props.navigation.navigate('FirstPage', {
+                         detailValue: "tv.id",
+                         typeOfData: "movie"
 
-                        <Text style={styles.textArea}>Trending Tv</Text>
-                        <Card data={TrendingTv} />
+                     })
+                 } >
 
-                        <Text style={styles.textArea}>Coming Soon Movies</Text>
-                        <Card data={ComingSoon} />
-                        <Text style={styles.textArea}>In Theatres</Text>
-                        <Card data={InTheatres} />
+                 < Image
+                 style = {
+                     {
+                         width: 100,
+                         height: 50,
+                         margin: 5,
+                         marginLeft:10
+                     }
+                 }
+                 source = {
+                     {
+                         uri: 'https://londonfeministfilmfestival.files.wordpress.com/2017/05/imdb-logo.png'
+                     }
+                 }
+                 />
+                 </TouchableOpacity>
+                 
+                 < TouchableOpacity onPress = {
+                     () => this.props.navigation.navigate('UserDetailsPage', {
+                         detailValue: "tv.id",
+                         typeOfData:"movie"
 
-                        <Text style={styles.textArea}>Trending Celebrities</Text>
-                        <CelebsCard data={TrendingCelebs} />
+                     })
+                 } >
+                     < Image
+                     style = {
+                         {
+                             width: 50,
+                             height: 50,
+                             padding: 10,
+                             margin: 5,
+                             marginRight: 10
 
-                    </ScrollView>
-                </View>
-            )}
+                         }
+                     }
+                     source = {
+                         {
+                             uri: 'https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png'
+                         }
+                     }
+                     />
+                 </TouchableOpacity>
+                 
+                 </View>
+              
+                 <ScrollView style={styles.scrollView}>
+                     < CarouselPage image={trendingMoviesImage} data={TrendingMovies} /> 
+                     
+                      <Text style={styles.textArea}>Trending Movies</Text>
+                      <Card data={TrendingMovies} onCardClick={this.props.navigation}/>
+ 
+                      <Text style={styles.textArea}>Trending Tv</Text>
+                      <Card data={TrendingTv} onCardClick={this.props.navigation}/>
+
+                      <Text style={styles.textArea}>Coming Soon Movies</Text>
+                      <Card data={ComingSoon} onCardClick={this.props.navigation}/>
+
+                      <Text style={styles.textArea}>In Theatres</Text>
+                      <Card data={InTheatres} onCardClick={this.props.navigation}/>
+
+                      <Text style={styles.textArea}>Trending Celebrities</Text>
+                      <CelebsCard data={TrendingCelebs} onCardClick={this.props.navigation}/> 
+
+
+                 </ScrollView>
+                 </View>
+            )
+        }
         else return (
-            <Image
-                source={require('../assets/loading.gif')}
-            />
+        <View style={styles.load}>
+            <ActivityIndicator size={150} color="#ffd700" />
+        </View>
         )
     }
 }
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#1E1C1C',
+        flex:1,
+        justifyContent:"center"
+
     },
     textArea: {
         marginTop: 20,
@@ -74,12 +138,23 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20
     },
-    scrollView: {
-        marginBottom: 200
-    },
     card: {
         padding: 10
 
+    },load:{
+        backgroundColor: '#1E1C1C',
+        height: "100%",
+  
+        //  flex: 1,
+         justifyContent: "center",
+         alignItems: "center"
+     
+
+    },
+    images:{
+        // flex:1,
+        justifyContent:'space-between',
+        flexDirection:"row"
     }
 });
 
@@ -96,6 +171,6 @@ const mapDispatchToProps = dispatch => ({
     trendingTv: () => dispatch(trendingTv()),
     trendingCelebs: () => dispatch(trendingCelebs()),
     comingSoon: () => dispatch(comingSoon()),
-    inTheatres: () => dispatch(inTheatres()),
+    inTheatres: () => dispatch(inTheatres())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
