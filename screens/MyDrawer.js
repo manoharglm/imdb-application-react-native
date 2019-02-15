@@ -11,7 +11,6 @@ class MyHomeScreen extends React.Component {
   constructor(props){
     super(props)
   }
-
    static navigationOptions = {
      drawerLabel:  ()=>(
          <Text style={{color:"white",marginLeft:10,fontSize:15 ,padding:20}}> Home</Text>
@@ -25,7 +24,6 @@ class MyHomeScreen extends React.Component {
    };
    render() {
      return (
-
       <View>
       <HomeScreen openDrawer = {
            this.props.navigation.openDrawer

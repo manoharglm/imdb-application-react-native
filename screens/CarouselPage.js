@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 const BannerWidth = Dimensions.get('window').width;
 const BannerHeight = 260;
-
-
 // const images = [
 //     "http://aboutreact.com/wp-content/uploads/2018/08/train_ticket_booking.png",
 //     "http://aboutreact.com/wp-content/uploads/2018/08/bus_ticket_booking.png",

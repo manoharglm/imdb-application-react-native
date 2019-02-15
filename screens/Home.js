@@ -12,7 +12,6 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
     }
     componentDidMount() {
@@ -33,7 +32,6 @@ class Home extends Component {
                 trendingMoviesImage.push(x.backdrop_path);
                 return (acc);
             }, [])
-
 
             return (
                 <View style={styles.container}>

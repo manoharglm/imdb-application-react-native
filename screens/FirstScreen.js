@@ -19,7 +19,6 @@ class HomeScreen extends React.Component {
    };
   render() {
     return (
-      // <Text>FirstScreen</Text>
       <MyDrawer />
     );
   }
@@ -40,7 +39,6 @@ class Movie extends React.Component {
    };
   render() {
     return (
-      // <Text>Second Screen</Text>
         <MyDrawer2 type={"movieScreen"}/>
       
     );
