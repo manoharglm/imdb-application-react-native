@@ -4,7 +4,8 @@ import {
     ScrollView,
     Image,
     StyleSheet,
-    Text
+    Text,
+    TouchableOpacity
 } from 'react-native';
 
 
@@ -15,11 +16,22 @@ class Card extends Component {
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
+               
                     {this.props.data.map(tv => {
-                        return <View style={styles.card} key={tv.id}>
+                        return <TouchableOpacity key={tv.id+1000}
+                         onPress = {
+                             () => this.props.onCardClick.navigate('ActorProfile', {
+                                 detailValue: tv.id,
+                                 typeOfData: (tv.original_title !== undefined) ? "movie" : "tv"
+
+                             })
+                         } >
+                        <View style={styles.card} key={tv.id}>
                             <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${tv['profile_path']}` }} />
                             <Text style={styles.baseText}> {tv.name} </Text> 
                         </View>
+                        </TouchableOpacity>
+
                     })}
                 </View>
             </ScrollView>

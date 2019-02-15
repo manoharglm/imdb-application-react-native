@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, WebView, Image , Platform, Dimensions, StyleSheet} from 'react-native';
+import { ScrollView, View, Text, WebView, Image , Platform, ActivityIndicator, Dimensions, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
-import YouTube from 'react-native-youtube'
 
 import { getMovieDetail } from '../store/actions'
 import CarouselPage from './CarouselPage'
@@ -14,8 +13,7 @@ class Movies extends Component {
         }
     }
     componentDidMount() {
-        let movieId = 155
-        this.props.getMovieDetail(movieId)
+        this.props.getMovieDetail(this.props.id)
     }
     render() {
         const { Movie } = this.props
@@ -58,11 +56,21 @@ class Movies extends Component {
             )
         }
         return (
-            <Text>Loading......</Text>
+            <View style={styles.load}>
+            <ActivityIndicator size={150} color="#ffd700" />
+        </View>
         )
     }
 }
 
+const styles = StyleSheet.create({
+    load:{
+        backgroundColor: '#1E1C1C',
+        height: "100%",
+         justifyContent: "center",
+         alignItems: "center"
+    }
+})
 const mapStateToProps = state => ({
     Movie: state.details.movieDetail,
 })

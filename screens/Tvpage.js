@@ -7,8 +7,6 @@ import SearchHeader from 'react-native-search-header';
 import { Header , Icon} from 'react-native-elements';
 import LogoImage from './logoIcon';
 import TopTv from './TopTv'
-import { ScrollView } from 'react-native-gesture-handler';
-
 
 export default class App extends React.Component {
     constructor(props) {

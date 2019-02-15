@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, View, WebView,Dimensions, Text, Image } from 'react-native';
+import { ScrollView, View, WebView,Dimensions, StyleSheet, ActivityIndicator, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
-import YouTube from 'react-native-youtube'
-
 import { getTvDetail } from '../store/actions'
 import CarouselPage from './CarouselPage';
 
@@ -14,7 +12,7 @@ class TvShows extends Component {
         }
     }
     componentDidMount() {
-        this.props.getTvDetail(1399)
+        this.props.getTvDetail(this.props.id)
     }
     render() {
         const { TvDetail } = this.props
@@ -73,11 +71,20 @@ class TvShows extends Component {
              )
          }
         else return (
-            <Text>Loading....</Text>
+            <View style={styles.load}>
+            <ActivityIndicator size={150} color="#ffd700" />
+        </View>
         )
     }
 }
-
+const styles = StyleSheet.create({
+    load:{
+        backgroundColor: '#1E1C1C',
+        height: "100%",
+         justifyContent: "center",
+         alignItems: "center"
+    }
+})
 const mapStateToProps = state => ({
     TvDetail: state.details.TvDetail,
 })

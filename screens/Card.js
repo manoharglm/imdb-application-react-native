@@ -4,29 +4,43 @@ import {
     ScrollView,
     Image,
     StyleSheet,
-    Text
+    Text,
+    TouchableOpacity
 } from 'react-native';
+
 
 
 class Card extends Component {
     state = {}
     render() {
+        
         return (
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    {this.props.data.map(tv => {
-                        return <View style={styles.card} key={tv.id}>
-                            <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${tv['poster_path']}` }} />
+                    {this.props.data.map(data => {
+                        return <TouchableOpacity key={data.id+1000}
+                         onPress = {
+                             () => this.props.onCardClick.navigate('SecondPage', {
+                                 id: data.id,
+                                 type: (data.original_title !== undefined) ? "movie" : "tv"
+
+                             })
+                         }
+                         >
+                         <View style={styles.card} key={data.id}>
+                            <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${data['poster_path']}` }} />
                             {
-                                (tv.original_title !== undefined) ? <Text style={styles.baseText}> {tv.original_title} </Text> : <Text style={styles.baseText}>{tv.name}</Text>
+                                (data.original_title !== undefined) ? <Text style={styles.baseText}> {data.original_title} </Text> : <Text style={styles.baseText}>{data.name}</Text>
                             }
                             <View style={{flex:1,flexDirection:"row"}}>
                                 <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
-                                <Text  style={styles.text}>{tv.vote_average}</Text>
+                                <Text  style={styles.text}>{data.vote_average}</Text>
                             </View>
                            
                         </View>
+                        </TouchableOpacity>
+                       
                     })}
                 </View>
             </ScrollView>
