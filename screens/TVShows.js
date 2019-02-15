@@ -3,6 +3,7 @@ import { ScrollView, View, WebView,Dimensions, StyleSheet, ActivityIndicator, Te
 import { connect } from 'react-redux';
 import { getTvDetail } from '../store/actions'
 import CarouselPage from './CarouselPage';
+import WatchlistButton from './watchListButton'
 
 class TvShows extends Component {
     constructor(props) {
@@ -19,10 +20,17 @@ class TvShows extends Component {
         if (TvDetail) {
             return (
                 <ScrollView style={{ backgroundColor: "black" }}>
-                                      <WebView 
+                    <WebView 
                         source={{uri : `https://www.youtube.com/embed/${TvDetail.videos.results[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
                         style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
                     />
+                    <View style={styles.watchlistRatingAndButton} >
+                        <View style={styles.movieRating}>
+                            <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
+                            <Text style={styles.ratingText}>{TvDetail.vote_average}</Text>
+                        </View>
+                        <WatchlistButton/>
+                    </View>
                     <ScrollView >
                         <ScrollView style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
@@ -83,7 +91,22 @@ const styles = StyleSheet.create({
         height: "100%",
          justifyContent: "center",
          alignItems: "center"
-    }
+    },
+    ratingText:{
+        color:'white',
+    },
+    movieRating:{
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'row'
+    },
+    watchlistRatingAndButton:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-around',
+        marginTop:20,
+        marginBottom:20
+    },
 })
 const mapStateToProps = state => ({
     TvDetail: state.details.TvDetail,

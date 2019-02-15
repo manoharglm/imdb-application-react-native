@@ -23,6 +23,11 @@ export const details = (state = [], action) => {
                 ...state,
                 personFilms: action.results
             }
+        case 'USER_WATCHLIST':
+            return {
+                ...state,
+                userWatchlist: action.results
+            }
 
         default:
             return state;

@@ -23,7 +23,6 @@ class Card extends Component {
                              () => this.props.onCardClick.navigate('ActorProfile', {
                                  detailValue: tv.id,
                                  typeOfData: (tv.original_title !== undefined) ? "movie" : "tv"
-
                              })
                          } >
                         <View style={styles.card} key={tv.id}>

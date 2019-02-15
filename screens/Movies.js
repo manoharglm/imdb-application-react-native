@@ -5,15 +5,14 @@ import {
     Text, 
     WebView, 
     Image , 
-    Platform, 
     ActivityIndicator, 
     Dimensions, 
     StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, ThemeProvider } from 'react-native-elements';
 import { getMovieDetail } from '../store/actions'
 import CarouselPage from './CarouselPage'
+import WatchlistButton from './watchListButton'
 
 class Movies extends Component {
     constructor(props) {
@@ -26,19 +25,8 @@ class Movies extends Component {
     componentDidMount() {
         this.props.getMovieDetail(this.props.id)
     }
-    handleButton =()=>{
-        this.setState(prevState => ({
-            watchlistButton : !prevState.watchlistButton
-        }))
-    }
     render() {
         const { Movie } = this.props
-        let butStyle = styles.watchlistBefore
-        let buttonTitle = "Add to Watchlist"
-        if(this.state.watchlistButton){
-            butStyle = styles.watchlistAfter
-            buttonTitle = "Added to Watchlist"
-        }
         if (Movie) {
             return (
                 <ScrollView style={{backgroundColor : "black"}} >
@@ -51,7 +39,7 @@ class Movies extends Component {
                             <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
                             <Text style={styles.ratingText}>{Movie.vote_average}</Text>
                         </View>
-                        <Button onPress={this.handleButton} buttonStyle={butStyle} titleStyle={butStyle} title={buttonTitle}/>
+                        <WatchlistButton/>
                     </View>
                     <ScrollView >
                         <ScrollView style={{ margin: 0 }}>
@@ -96,12 +84,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
-    watchlistBefore:{
-        backgroundColor:'transparent'
+    ratingText:{
+        color:'white',
     },
-    watchlistAfter:{
-        backgroundColor:'gold',
-        borderColor:'white',
+    movieRating:{
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'row'
     },
     watchlistRatingAndButton:{
         flexDirection:'row',
@@ -110,14 +99,6 @@ const styles = StyleSheet.create({
         marginTop:20,
         marginBottom:20
     },
-    ratingText:{
-        color:'white',
-    },
-    movieRating:{
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection:'row'
-    }
 })
 const mapStateToProps = state => ({
     Movie: state.details.movieDetail,
