@@ -78,6 +78,7 @@ const TabNavigator = createBottomTabNavigator({
   Tv : Tv
 }, {
   tabBarOptions: {
+    activeTintColor:'gold',
     style: {
       backgroundColor: '#1a1a1a',
       height:50
