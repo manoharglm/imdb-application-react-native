@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { getMovieDetail } from '../store/actions'
 import CarouselPage from './CarouselPage'
 import WatchlistButton from './watchListButton'
+import CastCard from './CastCard'
 
 class Movies extends Component {
     constructor(props) {
@@ -44,18 +45,7 @@ class Movies extends Component {
                     <ScrollView >
                         <ScrollView style={{ margin: 0 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
-                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    {Movie.credits.cast.map(cast => {
-                                        return <View key={cast.id} style={{ margin: 12 }} >
-                                            <Image style={{ width: 100, height: 100 }} 
-                                            source={{ uri: `https://image.tmdb.org/t/p/w200/${cast['profile_path']}` }} />
-                                            <Text style={{ color: "white" }}>{cast['name']}</Text>
-                                            <Text style={{ color: "grey" }}>{cast['character']}</Text>
-                                        </View>
-                                    })}
-                                </View>
-                            </ScrollView>
+                            <CastCard data={Movie.credits.cast}/>
                         </ScrollView>
                         <View style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>{Movie.title}</Text>

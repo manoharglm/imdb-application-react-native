@@ -60,29 +60,18 @@ render() {
                 <View style={styles.actorPersonalDetails}>
                     <Text style={styles.actorPersonalDetailsTitle}>Personal Details</Text>
                     <View style={styles.actorPersonalDetailsTable}>
-                    <FlatList
-                        data={[
-                            {key: 'Birthday'},
-                            {key: 'Place of birth'},
-                            {key: 'Popularity'},
-                            {key: 'Homepage'},
-                        ]}
-                        renderItem={({item}) => 
-                            <Text style={styles.actorPersonalDetailsList}>{item.key.toString()}</Text>
-                        }
-                    />
-                    <FlatList
-                        data={[
-                            {key: actorDetail.birthday},
-                            {key: actorDetail.place_of_birth},
-                            {key: actorDetail.popularity},
-                            {key: actorDetail.homepage},
-                        ]}
-                        renderItem={({item}) => 
-                            <Text style={styles.actorPersonalDetailsList}>{item.key.toString()}</Text>
-                        }
-                        keyExtractor={(item) => item.toString()}
-                    />
+                        <View>
+                            <Text style={styles.actorPersonalDetailsList}>Birthday</Text>
+                            <Text style={styles.actorPersonalDetailsList}>Place of birth</Text>
+                            <Text style={styles.actorPersonalDetailsList}>Popularity</Text>
+                            <Text style={styles.actorPersonalDetailsList}>Homepage</Text>
+                        </View>
+                        <View>
+                            <Text style={styles.actorPersonalDetailsList}>{actorDetail.birthday}</Text>
+                            <Text style={styles.actorPersonalDetailsList}>{actorDetail.place_of_birth}</Text>
+                            <Text style={styles.actorPersonalDetailsList}>{actorDetail.popularity}</Text>
+                            <Text style={styles.actorPersonalDetailsList}>{actorDetail.homepage}</Text>
+                        </View>
                     </View>
                     <View style={styles.actorPersonalDetailsBiography}>
                         <Text style={styles.actorPersonalDetailsBiographyTitle}>Biography</Text>
@@ -178,7 +167,7 @@ const styles = StyleSheet.create({
     },
     actorPersonalDetailsTable:{
         flexDirection:'row',
-        paddingLeft:20
+        justifyContent:'space-around'
     },
     actorPersonalDetailsBiography:{
         color:'white',
