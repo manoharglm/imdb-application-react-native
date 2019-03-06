@@ -88,7 +88,7 @@ class TopTv extends Component {
             )
         }
         else return <View style={styles.load}>
-        <ActivityIndicator size={150} color="#ffd700" />
+        <ActivityIndicator size={50} color="#ffd700" />
     </View>
     }
 }
