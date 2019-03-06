@@ -7,9 +7,6 @@ import CelebsCard from './CelebsCard';
 import { trendingMovies, trendingTv, trendingCelebs, inTheatres, comingSoon } from '../store/actions';
 
 class Home extends Component {
-    constructor(props) {
-        super(props)
-    }
      static navigationOptions = {
          header: null
      }
