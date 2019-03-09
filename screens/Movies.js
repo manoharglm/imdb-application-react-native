@@ -31,10 +31,14 @@ class Movies extends Component {
         if (Movie) {
             return (
                 <ScrollView style={{backgroundColor : "black"}} >
-                    <WebView 
-                        source={{uri : `https://www.youtube.com/embed/${Movie.videos.results[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
-                        style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
-                    />
+                    {
+                        (Movie.videos.results[0])
+                        ? <WebView 
+                            source={{uri : `https://www.youtube.com/embed/${Movie.videos.results[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
+                            style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
+                          />
+                        : <Text style={{color:'white', fontWeight:'bold', textAlign:'center'}}>Video unavailable</Text>
+                    }
                     <View style={styles.watchlistRatingAndButton} >
                         <View style={styles.movieRating}>
                             <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
