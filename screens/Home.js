@@ -39,13 +39,15 @@ class Home extends Component {
                 <View style={styles.container}>
                  <View style={styles.images}>
 
-                 <TouchableOpacity onPress = {
-                     () => this.props.navigation.navigate('FirstPage', {
-                         detailValue: "tv.id",
-                         typeOfData: "movie"
+                 <View 
+                //  onPress = {
+                //      () => this.props.navigation.navigate('FirstPage', {
+                //          detailValue: "tv.id",
+                //          typeOfData: "movie"
 
-                     })
-                 } >
+                //      })
+                //  } 
+                 >
 
                  < Image
                  style = {
@@ -62,7 +64,7 @@ class Home extends Component {
                      }
                  }
                  />
-                 </TouchableOpacity>
+                 </View>
                  
                  < TouchableOpacity onPress = {
                      () => this.props.navigation.navigate('UserDetailsPage', {

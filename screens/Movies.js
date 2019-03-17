@@ -30,7 +30,7 @@ class Movies extends Component {
         const { Movie } = this.props
         if (Movie) {
             return (
-                <ScrollView style={{backgroundColor : "black"}} >
+                <ScrollView style={{backgroundColor : "black"}}>
                     {
                         (Movie.videos.results[0])
                         ? <WebView 
@@ -46,7 +46,7 @@ class Movies extends Component {
                         </View>
                         <WatchlistButton/>
                     </View>
-                    <ScrollView >
+                    <ScrollView>
                         <ScrollView style={{ margin: 0 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
                             <CastCard data={Movie.credits.cast}/>
