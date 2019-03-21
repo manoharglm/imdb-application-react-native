@@ -55,7 +55,7 @@ render() {
                 </View>
                 <View style={styles.movieList}>
                     <Text style={styles.movieListTitle}>Filmography</Text>
-                    <Card2 data={films} />
+                    <Card2 onCardClick = {this.props.navigation} data={films} />
                 </View>
                 <View style={styles.actorPersonalDetails}>
                     <Text style={styles.actorPersonalDetailsTitle}>Personal Details</Text>
