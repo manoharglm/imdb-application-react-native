@@ -23,7 +23,8 @@ class Card extends Component {
                          onPress = {
                              () => this.props.onCardClick.navigate('SecondPage', {
                                  id: data.id,
-                                 type: (data.original_title !== undefined) ? "movie" : "tv"
+                                 type: (data.original_title !== undefined) ? "movie" : "tv",
+                                 onCardClick: this.props.onCardClick
 
                              })
                          }

@@ -28,6 +28,9 @@ class Movies extends Component {
     }
     render() {
         const { Movie } = this.props
+        // console.log('Movie page manohar',this.props);
+        
+        
         if (Movie) {
             return (
                 <ScrollView style={{backgroundColor : "black"}}>
@@ -49,7 +52,7 @@ class Movies extends Component {
                     <ScrollView>
                         <ScrollView style={{ margin: 0 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
-                            <CastCard data={Movie.credits.cast}/>
+                            <CastCard onCardClick={this.props.onCardClick} data={Movie.credits.cast}/>
                         </ScrollView>
                         <View style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>{Movie.title}</Text>

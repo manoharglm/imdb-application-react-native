@@ -13,17 +13,25 @@ import {
 class CastCard extends Component {
     state = {}
     render() {
-        console.log(this.props.data)
+        
+
         return (
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     {this.props.data.map(data => {
-                        return  <View style={styles.card} key={data.id}>
+                        return  <TouchableOpacity style={styles.card} key={data.id}
+                        onPress = {
+                            () => this.props.onCardClick.navigate('ActorProfile', {
+                                detailValue: data.id,
+                                typeOfData: (data.original_title !== undefined) ? "movie" : "tv"
+                            })
+                        }
+                        >
                             <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w200/${data['profile_path']}` }} />
                              <Text style={styles.baseText}> {data.name} </Text>
                              <Text style={styles.subText}> {data.character} </Text>
-                        </View>
+                        </TouchableOpacity>
                     })}
                 </View>
             </ScrollView>

@@ -9,11 +9,13 @@ export default class SecondPage extends Component {
     title: 'Details',
   };
   render() {
+    console.log('manohar second page',this.props.navigation);
+    
     const {id , type } = this.props.navigation.state.params
     if(type === 'movie'){
-      return(<Movies id={id}/>)
+      return(<Movies onCardClick={this.props.navigation} id={id}/>)
     }
-    else return(<TVShows id={id}/>)
+    else return(<TVShows onCardClick={this.props.navigation} id={id}/>)
   }
 }
 const styles = StyleSheet.create({

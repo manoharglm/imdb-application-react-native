@@ -35,7 +35,7 @@ class TvShows extends Component {
                     <ScrollView >
                         <ScrollView style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>
-                            <CastCard data={TvDetail.credits.cast}/>
+                            <CastCard onCardClick={this.props.onCardClick} data={TvDetail.credits.cast}/>
                         </ScrollView>
                         <View style={{ margin: 12 }}>
                             <View style={{display: "flex", flexDirection : "row", justifyContent : "space-between"}}>
