@@ -22,14 +22,20 @@ const App = createStackNavigator({
     },ActorProfile :{
         screen: ActorProfile
     }
-}, {
-    initialRouteName: 'FirstPage',
-},
+}, 
 {
-    navigationOptions: {
-        header: null,
-    }
-});
+    initialRouteName: 'FirstPage',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'black',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
 
 const RenderStack = createAppContainer(App);
 

@@ -25,11 +25,15 @@ const App = createStackNavigator({
     }
 }, {
     initialRouteName: 'FirstPage',
-},
-{
-    navigationOptions: {
-        header: null,
-    }
+    defaultNavigationOptions: {
+        headerStyle: {
+          backgroundColor: 'black',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      },
 });
 
 const RenderStack = createAppContainer(App);
