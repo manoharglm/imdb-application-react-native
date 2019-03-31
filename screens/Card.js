@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         padding: 10,
         color: 'white',
         fontSize: 16,
-        height: 80
+        height: 40
 
     },
     text:{

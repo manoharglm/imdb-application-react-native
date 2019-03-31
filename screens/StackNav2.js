@@ -27,7 +27,7 @@ const App = createStackNavigator({
     initialRouteName: 'FirstPage',
     defaultNavigationOptions: {
         headerStyle: {
-          backgroundColor: 'black',
+            backgroundColor:'#1E1C1C',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

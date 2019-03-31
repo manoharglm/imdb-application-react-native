@@ -1,4 +1,4 @@
-package com.imdbcapstone;
+package com.imdb;
 
 import android.app.Application;
 

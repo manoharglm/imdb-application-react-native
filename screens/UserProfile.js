@@ -124,7 +124,7 @@ class UserProfile extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor:'#1E1C1C',
     },
     userProfile: {
         flexDirection: 'row',

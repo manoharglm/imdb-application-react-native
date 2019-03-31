@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text ,StyleSheet,Image, TouchableOpacity,ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text ,StyleSheet,Image, TouchableOpacity,ActivityIndicator, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import CarouselPage from './CarouselPage';
 import Card from './Card';
@@ -37,6 +37,8 @@ class Home extends Component {
             return (  
 
                 <View style={styles.container}>
+                  <StatusBar backgroundColor='#1E1C1C' barStyle="light-content" />
+
                  <View style={styles.images}>
 
                  <View 

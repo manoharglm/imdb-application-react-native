@@ -90,7 +90,7 @@ render() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor:'#1E1C1C',
     },
     actorPoster:{
         height:250,
