@@ -33,13 +33,13 @@ class Movies extends Component {
         
         if (Movie) {
             return (
-                <ScrollView style={{backgroundColor : "black"}}>
+                <ScrollView style={{backgroundColor: '#1E1C1C',}}>
                     {
                         (Movie.videos.results[0])
                         ? <WebView 
                             source={{uri : `https://www.youtube.com/embed/${Movie.videos.results[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
-                            style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
-                          />
+                            style={{width: Dimensions.get('window').width, height: 250, }}
+                            />
                         : <Text style={{color:'white', fontWeight:'bold', textAlign:'center'}}>Video unavailable</Text>
                     }
                     <View style={styles.watchlistRatingAndButton} >

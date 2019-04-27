@@ -7,9 +7,7 @@ import {
     Text
 } from 'react-native';
 const BannerWidth = Dimensions.get('window').width;
-const BannerHeight = 250;
-
-
+const BannerHeight = 200;
 
 
 class CarouselPage extends Component {

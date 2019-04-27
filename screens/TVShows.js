@@ -20,11 +20,11 @@ class TvShows extends Component {
         const { TvDetail } = this.props
         if (TvDetail) {
             return (
-                <ScrollView style={{ backgroundColor: "black" }}>
+                <ScrollView style={{backgroundColor: '#1E1C1C',}}>
                     <WebView 
                         source={{uri : `https://www.youtube.com/embed/${TvDetail.videos.results[0]['key']}?rel=0&autoplay=0&showinfo=0&controls=0`}}
-                        style={{ marginTop: 20, width: Dimensions.get('window').width, height: 300 }}
-                    />
+                        style={{width: Dimensions.get('window').width, height: 250, }}
+                        />
                     <View style={styles.watchlistRatingAndButton} >
                         <View style={styles.movieRating}>
                             <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />

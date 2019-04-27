@@ -121,6 +121,7 @@ class Home extends Component {
         }
         else return (
         <View style={styles.load}>
+            <StatusBar backgroundColor='#1E1C1C' barStyle="light-content" />
             <ActivityIndicator size={50} color="#ffd700" />
         </View>
         )
