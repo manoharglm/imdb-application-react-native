@@ -30,10 +30,11 @@ componentDidMount() {
     this.props.getFilmography(detailValue)
 }
 render() {
+    
     const {actorDetail, films} = this.props
     let trendingMoviesImage = [];
     
-      if(actorDetail && films){
+      if(actorDetail && films && actorDetail.id === this.props.navigation.state.params.detailValue){
         let image = actorDetail.images.profiles.reduce(function (acc, x) {
             trendingMoviesImage.push(x.file_path);
             return (acc);

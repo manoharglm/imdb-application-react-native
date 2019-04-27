@@ -27,11 +27,11 @@ class Movies extends Component {
         this.props.getMovieDetail(this.props.id)
     }
     render() {
-        const { Movie } = this.props
+        const { Movie, id } = this.props
         // console.log('Movie page manohar',this.props);
         
         
-        if (Movie) {
+        if (Movie && Movie.id === id) {
             return (
                 <ScrollView style={{backgroundColor: '#1E1C1C',}}>
                     {

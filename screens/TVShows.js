@@ -16,9 +16,9 @@ class TvShows extends Component {
     componentDidMount() {
         this.props.getTvDetail(this.props.id)
     }
-    render() {
-        const { TvDetail } = this.props
-        if (TvDetail) {
+    render() {        
+        const { TvDetail, id } = this.props
+        if (TvDetail && TvDetail.id === id) {
             return (
                 <ScrollView style={{backgroundColor: '#1E1C1C',}}>
                     <WebView 
