@@ -9,7 +9,6 @@ export default class SecondPage extends Component {
     title: 'Details',
   };
   render() {
-    console.log('manohar second page',this.props.navigation);
     
     const {id , type } = this.props.navigation.state.params
     if(type === 'movie'){

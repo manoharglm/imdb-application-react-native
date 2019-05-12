@@ -78,9 +78,7 @@ export default class Demo extends Component {
                     }}
                     placeholder = 'Search...'
                     placeholderColor = 'gray'
-                    onClear = {() => {
-                        console.log(`Clearing input!`);
-                    }}
+                    onClear = {() => {}}
                      onGetAutocompletions = {
                          async (text) => {
                              if (text) {

@@ -28,7 +28,7 @@ class Movies extends Component {
     }
     render() {
         const { Movie, id } = this.props
-        // console.log('Movie page manohar',this.props);
+        console.log('Movie page manohar',this.props);
         
         
         if (Movie && Movie.id === id) {
@@ -47,7 +47,9 @@ class Movies extends Component {
                             <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
                             <Text style={styles.ratingText}>{Movie.vote_average}</Text>
                         </View>
-                        <WatchlistButton/>
+                        <WatchlistButton
+                            data = {Movie}
+                        />
                     </View>
                     <ScrollView>
                         <ScrollView style={{ margin: 0 }}>

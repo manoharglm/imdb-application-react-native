@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { 
     StyleSheet,
+    AsyncStorage
 } from 'react-native';
+
 class WatchlistButton extends Component {
     constructor(props) {
         super(props)
@@ -11,20 +13,65 @@ class WatchlistButton extends Component {
             watchlistButton:false,
         }
     }
-    handleButton =()=>{
-        this.setState(prevState => ({
-            watchlistButton : !prevState.watchlistButton
-        }))
+
+    componentDidMount(){
+        // AsyncStorage.removeItem('WATCHLIST')
+        this._retrieveData().then(data => {     
+            console.log('data',data);
+                   
+            if(!data){
+                this._storeData(JSON.stringify([])) 
+            }else if(data.length !== 0){
+                if(data.some(item => item.id === this.props.data.id)){
+                    this.setState({
+                        watchlistButton:true,
+                    })
+                }
+            }
+        })        
+    }
+
+    _retrieveData = async () => {
+        try {
+            const value = await AsyncStorage.getItem('WATCHLIST');
+            return JSON.parse(value)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    _storeData = async (data) => {
+        if(data){
+            try {
+                await AsyncStorage.setItem('WATCHLIST', data)
+              } catch (error) {
+                  console.log(error);
+              }
+        }
+    }
+    handleButton =(bool)=>{
+        console.log('Button Pressed');
+
+        this.setState({
+            watchlistButton : bool,
+            // data: this.props.data
+        }, () => {
+            this._retrieveData().then( data => {
+                let updatedData =[...data,this.props.data]
+                this._storeData(JSON.stringify(updatedData)) 
+            })
+        })
     }
     render(){
         let butStyle = styles.watchlistBefore
         let buttonTitle = "Add to Watchlist"
         if(this.state.watchlistButton){
-            butStyle = styles.watchlistAfter
+            // butStyle = styles.watchlistAfter
             buttonTitle = "Added to Watchlist"
         }
+
         return(
-            <Button onPress={this.handleButton} buttonStyle={butStyle} titleStyle={butStyle} title={buttonTitle}/>
+            <Button disabledStyle={styles.watchlistAfter} disabled={this.state.watchlistButton} onPress={()=>this.handleButton(true)} buttonStyle={butStyle} titleStyle={butStyle} title={buttonTitle}/>
         )
     }
 }
@@ -34,7 +81,6 @@ const styles = StyleSheet.create({
     },
     watchlistAfter:{
         backgroundColor:'gold',
-        borderColor:'white',
     },
 })
 const mapStateToProps = state => ({

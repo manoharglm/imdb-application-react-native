@@ -61,9 +61,7 @@ export default class App extends React.Component {
                     placeholder='Search...'
                     placeholderColor='gray'
                     onClear={
-                        () => {
-                            console.log(`Clearing input!`);
-                        }
+                        () => {}
                     }
                     onGetAutocompletions={
                         async (text) => {

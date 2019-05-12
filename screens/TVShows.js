@@ -16,7 +16,9 @@ class TvShows extends Component {
     componentDidMount() {
         this.props.getTvDetail(this.props.id)
     }
-    render() {        
+    render() {   
+        console.log('tv',this.props.TvDetail);
+             
         const { TvDetail, id } = this.props
         if (TvDetail && TvDetail.id === id) {
             return (
@@ -30,8 +32,10 @@ class TvShows extends Component {
                             <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
                             <Text style={styles.ratingText}>{TvDetail.vote_average}</Text>
                         </View>
-                        <WatchlistButton/>
-                    </View>
+                        <WatchlistButton
+                            data = {TvDetail}
+                        />                    
+                        </View>
                     <ScrollView >
                         <ScrollView style={{ margin: 12 }}>
                             <Text style={{ color: "white" }}>Top Billed Cast</Text>

@@ -10,9 +10,9 @@ const store = createStore(
     initialState,
     applyMiddleware(thunk)
     );
-    console.log('getting store', store.getState())
+    // console.log('getting store', store.getState())
 
     store.subscribe(() => {
-        console.log(store.getState())
+        // console.log(store.getState())
     })
 export default store;
