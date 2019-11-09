@@ -37,11 +37,10 @@ class CarouselPage extends Component {
                                     fontWeight: 'bold',
                                     color: 'white',
                                     position: 'absolute', // child
-                                    bottom: 30, // position where you want
-                                    left: 10,
-                                    backgroundColor: 'gray',
-                                    padding: 10,
-                                    opacity: .8
+                                    bottom: 0, // position where you want
+                                    backgroundColor: 'rgba(0,0,0,0.2)',
+                                    padding: 20,
+                                    width: '100%'
                                 }}
                             >
                                 {this.props.data[index].original_title}

@@ -89,6 +89,12 @@ render() {
 }
 
 const styles = StyleSheet.create({
+    load:{
+        backgroundColor: '#1E1C1C',
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center"
+    },
     container: {
         flex: 1,
         backgroundColor:'#1E1C1C',
