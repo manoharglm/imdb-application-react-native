@@ -50,8 +50,6 @@ class WatchlistButton extends Component {
         }
     }
     handleButton =(bool)=>{
-        console.log('Button Pressed');
-
         this.setState({
             watchlistButton : bool,
             // data: this.props.data
@@ -64,14 +62,17 @@ class WatchlistButton extends Component {
     }
     render(){
         let butStyle = styles.watchlistBefore
-        let buttonTitle = "Add to Watchlist"
-        if(this.state.watchlistButton){
-            // butStyle = styles.watchlistAfter
-            buttonTitle = "Added to Watchlist"
-        }
+        let buttonTitle = this.state.watchlistButton ? "Added to Watchlist" : "Add to Watchlist"
 
         return(
-            <Button disabledStyle={styles.watchlistAfter} disabled={this.state.watchlistButton} onPress={()=>this.handleButton(true)} buttonStyle={butStyle} titleStyle={butStyle} title={buttonTitle}/>
+            <Button 
+                disabledStyle={styles.watchlistAfter} 
+                disabled={this.state.watchlistButton} 
+                onPress={()=>this.handleButton(true)} 
+                buttonStyle={butStyle} 
+                titleStyle={butStyle} 
+                title={buttonTitle}
+            />
         )
     }
 }
