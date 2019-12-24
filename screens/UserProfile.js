@@ -50,9 +50,7 @@ class UserProfile extends Component {
     render() {
         return (
             <View style={styles.container}>
-                < Header openDrawer = {
-                    this.props.openDrawer
-                        }/>
+                < Header />
                 <ScrollView>
                 <View style={styles.userProfile}>
                     <Image

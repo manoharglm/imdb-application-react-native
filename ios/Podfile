@@ -1,0 +1,41 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'IMDb' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for IMDb
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+
+  pod 'react-native-youtube', :path => '../node_modules/react-native-youtube'
+
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  target 'IMDbTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'IMDb-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for IMDb-tvOS
+
+  target 'IMDb-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'DCTAuth', :git => 'https://github.com/danielctull/DCTAuth.git'

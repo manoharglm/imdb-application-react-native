@@ -17,9 +17,7 @@ class App extends React.Component {
                         name="menu"
                          color="white"
                          size = {32}
-                            onPress={
-                                () => this.props.openDrawer()
-                            }/>
+                           />
                     }
                     centerComponent={<LogoImage />}
                     rightComponent={
