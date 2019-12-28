@@ -8,52 +8,45 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+function Card(props) {
+    return (
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                {props.data.map(data => {
+                    return <TouchableOpacity key={data.id + 1000}
+                        onPress={
+                            () => props.onCardClick.navigate('SecondPage', {
+                                id: data.id,
+                                type: (data.original_title !== undefined) ? "movie" : "tv",
+                                onCardClick: props.onCardClick
 
-
-class Card extends Component {
-    state = {}
-    render() {
-        
-        return (
-
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    {this.props.data.map(data => {
-                        return <TouchableOpacity key={data.id+1000}
-                         onPress = {
-                             () => this.props.onCardClick.navigate('SecondPage', {
-                                 id: data.id,
-                                 type: (data.original_title !== undefined) ? "movie" : "tv",
-                                 onCardClick: this.props.onCardClick
-
-                             })
-                         }
-                         >
-                         <View style={styles.card} key={data.id}>
+                            })
+                        }
+                    >
+                        <View style={styles.card} key={data.id}>
                             <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${data['poster_path']}` }} />
                             {
-                                (data.original_title !== undefined) 
-                                ? <Text 
-                                    style={styles.baseText}
-                                    numberOfLines={1}
-                                > {data.original_title} </Text> 
-                                : <Text style={styles.baseText}>{data.name}</Text>
+                                (data.original_title !== undefined)
+                                    ? <Text
+                                        style={styles.baseText}
+                                        numberOfLines={1}
+                                    > {data.original_title} </Text>
+                                    : <Text style={styles.baseText}>{data.name}</Text>
                             }
-                            <View style={{flex:1,flexDirection:"row"}}>
-                                <Image style={{ width: 25, height: 25, margin:4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
-                                <Text  style={styles.text}>{data.vote_average}</Text>
+                            <View style={{ flex: 1, flexDirection: "row" }}>
+                                <Image style={{ width: 25, height: 25, margin: 4 }} source={{ uri: `https://cdn3.iconfinder.com/data/icons/basic-flat-svg/512/svg06-512.png` }} />
+                                <Text style={styles.text}>{data.vote_average}</Text>
                             </View>
-                           
+
                         </View>
-                        </TouchableOpacity>
-                       
-                    })}
-                </View>
-            </ScrollView>
+                    </TouchableOpacity>
+
+                })}
+            </View>
+        </ScrollView>
 
 
-        );
-    }
+    );
 }
 
 const styles = StyleSheet.create({
@@ -70,11 +63,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         height: 40,
     },
-    text:{
-         padding: 10,
+    text: {
+        padding: 10,
         color: 'white',
         fontSize: 16,
     }
 });
 
-export default Card;
+export default React.memo(Card);

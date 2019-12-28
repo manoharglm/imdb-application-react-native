@@ -8,16 +8,17 @@
   },
   "dependencies": {
     "link": "^0.1.5",
-    "react": "16.6.3",
+    "react": "^16.12.0",
     "react-native": "0.58.4",
     "react-native-banner-carousel": "^1.0.3",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.5.2",
+    "react-native-google-signin": "^2.1.1",
     "react-native-oauth": "^2.1.18",
     "react-native-paper": "^3.2.1",
     "react-native-search-header": "^0.3.1",
     "react-native-vector-icons": "^6.2.0",
-    "react-native-youtube": "^1.1.0",
+    "react-native-youtube": "^2.0.0",
     "react-navigation": "^3.2.1",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
@@ -29,7 +30,8 @@
     "jest": "24.1.0",
     "jetifier": "^1.6.5",
     "metro-react-native-babel-preset": "0.51.1",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.6.3",
+    "why-did-you-update": "^1.0.6"
   },
   "jest": {
     "preset": "react-native"

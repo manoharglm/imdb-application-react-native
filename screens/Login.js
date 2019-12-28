@@ -15,6 +15,8 @@ import {
     TextInput,
 } from 'react-native-paper';
 import Header from './Header';
+import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
+
 const theme = {
     roundness: 2,
     colors: {
@@ -28,7 +30,8 @@ class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            userInfo: ''
         }
     }
     // componentDidMount(){
@@ -60,8 +63,36 @@ class Login extends Component {
         }
 
     }
+    signIn = async () => {
+        try {
+          await GoogleSignin.hasPlayServices();
+          const userInfo = await GoogleSignin.signIn();
+          this.setState({ userInfo });
+        } catch (error) {
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+              alert('SIGN_IN_CANCELLED');
+            // user cancelled the login flow
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            alert('IN_PROGRESS');
+            // operation (e.g. sign in) is in progress already
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            alert('PLAY_SERVICES_NOT_AVAILABLE');
+            // play services not available or outdated
+          } else {
+            alert('error',error);
+            // some other error happened
+          }
+        }
+    };
+
+    _signIn = () => {
+        GoogleSignin.configure();
+        this.signIn()
+    }
 
     render() {
+        console.log('userInfo',this.state.userInfo);
+        
         return (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
                 <View style={styles.container}>
@@ -82,8 +113,8 @@ class Login extends Component {
                         label='Email'
                         underlineColor='#F5C518'
                         theme={theme}
-                        textContentType = 'emailAddress'
-                        keyboardAppearance = 'email-address'
+                        textContentType='emailAddress'
+                        keyboardAppearance='default'
                     />
                     <TextInput
                         style={{ backgroundColor: 'white', marginHorizontal: 20 }}
@@ -106,6 +137,14 @@ class Login extends Component {
                             accessibilityLabel="Login to application"
                         />
                     </View>
+                    <GoogleSigninButton
+                        style={{ width: 192, height: 48, margin: 10, alignSelf: 'center' }}
+                        size={GoogleSigninButton.Size.Wide}
+                        color={GoogleSigninButton.Color.Dark}
+                        onPress={this._signIn}
+                        // disabled={this.state.isSigninInProgress} 
+                        
+                    />
                 </View>
             </TouchableWithoutFeedback>
         )

@@ -15,6 +15,10 @@ target 'IMDb' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
+
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   target 'IMDbTests' do
     inherit! :search_paths
     # Pods for testing

@@ -9,6 +9,8 @@ import StackNavigation from './StackNav';
 import StackNavigation2 from './StackNav2';
 import StackNavigation3 from './StackNav3';
 
+// console.disableYellowBox = true;
+// require('why-did-you-update').whyDidYouUpdate(require('react'), { exclude: /^YellowBox/ });
 
 class HomeScreen extends React.Component {
   static navigationOptions = {

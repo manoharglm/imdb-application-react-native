@@ -1,52 +1,43 @@
 import React from "react";
-import { View,StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Button } from "react-native";
 import LogoImage from './logoIcon';
-import { Header , Icon} from 'react-native-elements';
+import { Header, Icon } from 'react-native-elements';
 
-
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-      }
-  render() {
+function App(props) {
     return (
-      <View>
-        <Header  style={{display:"flex", alignContent:"center"}}
-                    leftComponent={
-                        <Icon 
+        <View>
+            <Header style={{ display: "flex", alignContent: "center" }}
+                leftComponent={
+                    <Icon
                         name="menu"
-                         color="white"
-                         size = {32}
-                           />
-                    }
-                    centerComponent={<LogoImage />}
-                    rightComponent={
-                          < Icon name = "search"
-                          color = "white"
-                          size = {
-                              32
-                          }
-                          onPress = {
-                              () => this.searchHeader.show()
-                          }
-                          />
-
-                    }
-
-                    containerStyle={
-                        {
-                            height: 60,
-                            padding: 0,
-                            backgroundColor: '#1E1C1C',
+                        color="white"
+                        size={32}
+                    />
+                }
+                centerComponent={<LogoImage />}
+                rightComponent={
+                    < Icon name="search"
+                        color="white"
+                        size={
+                            32
                         }
+                        onPress={
+                            () => this.searchHeader.show()
+                        }
+                    />
+
+                }
+                containerStyle={
+                    {
+                        height: 60,
+                        padding: 0,
+                        backgroundColor: '#1E1C1C',
                     }
-                />
-      
-            {/* <HomeScreen /> */}
-            </View>
-     
+                }
+            />
+        </View>
+
     );
-  }
 }
 const styles = StyleSheet.create({
     container: {
@@ -66,5 +57,4 @@ const styles = StyleSheet.create({
 
     }
 });
-
-export default App;
+export default React.memo(App);

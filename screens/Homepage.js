@@ -5,79 +5,71 @@ import {
 } from 'react-native';
 import SearchHeader from 'react-native-search-header';
 import HomePageContent from './Home';
-import { Header , Icon} from 'react-native-elements';
+import { Header, Icon } from 'react-native-elements';
 import LogoImage from './logoIcon';
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <Header  style={{display:"flex", alignContent:"center"}}
-                    leftComponent={
-                        <Icon 
+function App(props) {
+    return (
+        <View style={styles.container}>
+            <Header style={{ display: "flex", alignContent: "center" }}
+                leftComponent={
+                    <Icon
                         name="menu"
-                         color="white"
-                         size = {32}
-                            />
+                        color="white"
+                        size={32}
+                    />
+                }
+                centerComponent={<LogoImage />}
+                rightComponent={
+                    < Icon name="search"
+                        color="white"
+                        size={
+                            32
+                        }
+                        onPress={
+                            () => this.searchHeader.show()
+                        }
+                    />
+                }
+                containerStyle={
+                    {
+                        height: 60,
+                        padding: 0,
+                        backgroundColor: '#1E1C1C',
                     }
-                    centerComponent={<LogoImage />}
-                    rightComponent={
-                          < Icon name = "search"
-                          color = "white"
-                          size = {
-                              32
-                          }
-                          onPress = {
-                              () => this.searchHeader.show()
-                          }
-                          />
+                }
+            />
 
+            <HomePageContent />
+
+            < SearchHeader
+                ref={
+                    (searchHeader) => {
+                        this.searchHeader = searchHeader;
                     }
-
-                    containerStyle={
-                        {
-                            height: 60,
-                            padding: 0,
-                            backgroundColor: '#1E1C1C',
+                }
+                placeholder='Search...'
+                placeholderColor='red'
+                onClear={
+                    () => { }
+                }
+                onGetAutocompletions={
+                    async (text) => {
+                        if (text) {
+                            const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${text}`, {
+                                method: `get`
+                            });
+                            const data = await response.json();
+                            return data[1];
+                        } else {
+                            return [];
                         }
                     }
-                />
-                
-                <HomePageContent />
+                }
 
-                < SearchHeader 
-                    ref={
-                        (searchHeader) => {
-                            this.searchHeader = searchHeader;
-                        }
-                    }
-                    placeholder='Search...'
-                    placeholderColor='red'
-                    onClear={
-                        () => {}
-                    }
-                    onGetAutocompletions={
-                        async (text) => {
-                            if (text) {
-                                const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${text}`, {
-                                    method: `get`
-                                });
-                                const data = await response.json();
-                                return data[1];
-                            } else {
-                                return [];
-                            }
-                        }
-                    }
-
-                />
-            </View>
-        );
-    }
+            />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -93,12 +85,12 @@ const styles = StyleSheet.create({
     header: {
 
     },
-    scrollView:{
-        marginBottom:50
+    scrollView: {
+        marginBottom: 50
     },
     card: {
         padding: 10
-
     }
 });
+export default React.memo(App);
 

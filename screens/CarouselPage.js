@@ -4,19 +4,16 @@ import {
     View,
     Dimensions,
     ImageBackground,
-    Text
+    Text,
+    ActivityIndicator,
+    StyleSheet
 } from 'react-native';
 const BannerWidth = Dimensions.get('window').width;
 const BannerHeight = 200;
 
+function CarouselPage(props) {
 
-class CarouselPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-
-    }
-    renderPage(image, index) {
+    let renderPage = (image, index) => {
         return (
             <View key={index}>
                 <ImageBackground key={index + 100}
@@ -29,9 +26,9 @@ class CarouselPage extends Component {
                         left: 2
                     }}
                 >
-                    {(this.props.data) ?
-
-                        (this.props.data[index].original_title) ?
+                    {(props.data) ?
+    
+                        (props.data[index].original_title) ?
                             <Text
                                 style={{
                                     fontWeight: 'bold',
@@ -43,9 +40,9 @@ class CarouselPage extends Component {
                                     width: '100%'
                                 }}
                             >
-                                {this.props.data[index].original_title}
+                                {props.data[index].original_title}
                             </Text>
-
+    
                             :
                             <Text
                                 style={{
@@ -59,37 +56,62 @@ class CarouselPage extends Component {
                                     opacity: .8
                                 }}
                             >
-                                {this.props.data[index].name}
+                                {props.data[index].name}
                             </Text>
                         : <Text></Text>
-
+    
                     }
-
+    
                 </ImageBackground>
-
+    
             </View>
         );
     }
-    render() {
 
-        if (this.props.image) {
+    if (props.image) {
+        return (
+            <Carousel
+                autoplay
+                autoplayTimeout={3000}
+                loop
+                index={0}
+                pageSize={BannerWidth}
+            >
 
-            return (
-                <Carousel
-                    autoplay
-                    autoplayTimeout={3000}
-                    loop
-                    index={0}
-                    pageSize={BannerWidth}
-                >
-
-                    {this.props.image.map((image, index) => this.renderPage(image, index))}
-                </Carousel>
-            );
-        } else {
-            return <Text>Arun</Text>
-        }
+                {props.image.map((image, index) => renderPage(image, index))}
+            </Carousel>
+        );
+    } else {
+        return (
+            <View style={styles.load}>
+            <ActivityIndicator size={50} color="#ffd700" />
+        </View>
+        )   
     }
 }
 
-export default CarouselPage;
+const styles = StyleSheet.create({
+    load:{
+        backgroundColor: '#1E1C1C',
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    ratingText:{
+        color:'white',
+    },
+    movieRating:{
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'row'
+    },
+    watchlistRatingAndButton:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-around',
+        marginTop:20,
+        marginBottom:20
+    },
+})
+
+export default React.memo(CarouselPage);

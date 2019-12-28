@@ -8,37 +8,27 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-
-
-class CastCard extends Component {
-    state = {}
-    render() {
-        
-
-        return (
-
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    {this.props.data.map(data => {
-                        return  <TouchableOpacity style={styles.card} key={data.id}
-                        onPress = {
-                            () => this.props.onCardClick.navigate('ActorProfile', {
+function CastCard(props) {
+    return (
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                {props.data.map(data => {
+                    return <TouchableOpacity style={styles.card} key={data.id}
+                        onPress={
+                            () => props.onCardClick.navigate('ActorProfile', {
                                 detailValue: data.id,
                                 typeOfData: (data.original_title !== undefined) ? "movie" : "tv"
                             })
                         }
-                        >
-                            <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w200/${data['profile_path']}` }} />
-                             <Text style={styles.baseText}> {data.name} </Text>
-                             <Text style={styles.subText}> {data.character} </Text>
-                        </TouchableOpacity>
-                    })}
-                </View>
-            </ScrollView>
-
-
-        );
-    }
+                    >
+                        <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w200/${data['profile_path']}` }} />
+                        <Text style={styles.baseText}> {data.name} </Text>
+                        <Text style={styles.subText}> {data.character} </Text>
+                    </TouchableOpacity>
+                })}
+            </View>
+        </ScrollView>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -61,11 +51,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         height: 40
     },
-    text:{
-         padding: 10,
+    text: {
+        padding: 10,
         color: 'white',
         fontSize: 16,
     }
 });
 
-export default CastCard;
+export default React.memo(CastCard);

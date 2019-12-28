@@ -9,9 +9,9 @@ import {
     StatusBar
 } from 'react-native';
 import SearchHeader from 'react-native-search-header';
- 
+
 const DEVICE_WIDTH = Dimensions.get(`window`).width;
- 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -54,50 +54,50 @@ const styles = StyleSheet.create({
         backgroundColor: `#ff5722`
     }
 });
- 
+
 export default class Demo extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
     }
-    render () {
+    render() {
         return (
-            <View style = { styles.container }>
-                <StatusBar barStyle = 'light-content' />
-                <View style = { styles.status }/>
-                <View style = { styles.header }>
-                    <Text style = { styles.label }> Demo </Text>
+            <View style={styles.container}>
+                <StatusBar backgroundColor='#1E1C1C' barStyle="light-content" />
+                <View style={styles.status} />
+                <View style={styles.header}>
+                    <Text style={styles.label}> Demo </Text>
                     <Button
-                        title = 'Search'
-                        color = 'red'
-                        onPress = {() => this.searchHeader.show()}
+                        title='Search'
+                        color='red'
+                        onPress={() => this.searchHeader.show()}
                     />
                 </View>
                 <SearchHeader
-                    ref = {(searchHeader) => {
+                    ref={(searchHeader) => {
                         this.searchHeader = searchHeader;
                     }}
-                    placeholder = 'Search...'
-                    placeholderColor = 'gray'
-                    onClear = {() => {}}
-                     onGetAutocompletions = {
-                         async (text) => {
-                             if (text) {
-                                 const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${text}`, {
-                                     method: `get`
-                                 });
-                                 const data = await response.json();
-                                 return data[1];
-                             } else {
-                                 return [];
-                             }
-                         }
-                     }
-                  
+                    placeholder='Search...'
+                    placeholderColor='gray'
+                    onClear={() => { }}
+                    onGetAutocompletions={
+                        async (text) => {
+                            if (text) {
+                                const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${text}`, {
+                                    method: `get`
+                                });
+                                const data = await response.json();
+                                return data[1];
+                            } else {
+                                return [];
+                            }
+                        }
+                    }
+
                 />
-               
+
             </View>
         );
     }
 }
- 
+
 AppRegistry.registerComponent('Demo', () => Demo);

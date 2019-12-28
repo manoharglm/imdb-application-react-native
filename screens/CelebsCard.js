@@ -8,36 +8,29 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+function Card(props) {
+    return (
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
 
-class Card extends Component {
-    state = {}
-    render() {
-        return (
-
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-               
-                    {this.props.data.map(tv => {
-                        return <TouchableOpacity key={tv.id+1000}
-                         onPress = {
-                             () => this.props.onCardClick.navigate('ActorProfile', {
-                                 detailValue: tv.id,
-                                 typeOfData: (tv.original_title !== undefined) ? "movie" : "tv"
-                             })
-                         } >
+                {props.data.map(tv => {
+                    return <TouchableOpacity key={tv.id + 1000}
+                        onPress={
+                            () => props.onCardClick.navigate('ActorProfile', {
+                                detailValue: tv.id,
+                                typeOfData: (tv.original_title !== undefined) ? "movie" : "tv"
+                            })
+                        } >
                         <View style={styles.card} key={tv.id}>
                             <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${tv['profile_path']}` }} />
-                            <Text style={styles.baseText}> {tv.name} </Text> 
+                            <Text style={styles.baseText}> {tv.name} </Text>
                         </View>
-                        </TouchableOpacity>
+                    </TouchableOpacity>
 
-                    })}
-                </View>
-            </ScrollView>
-
-
-        );
-    }
+                })}
+            </View>
+        </ScrollView>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +50,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Card;
+export default React.memo(Card);

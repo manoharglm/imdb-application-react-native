@@ -16,9 +16,7 @@ class TvShows extends Component {
     componentDidMount() {
         this.props.getTvDetail(this.props.id)
     }
-    render() {   
-        console.log('tv',this.props.TvDetail);
-             
+    render() {                
         const { TvDetail, id } = this.props
         if (TvDetail && TvDetail.id === id) {
             return (

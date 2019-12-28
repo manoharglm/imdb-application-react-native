@@ -16,9 +16,7 @@ class WatchlistButton extends Component {
 
     componentDidMount(){
         // AsyncStorage.removeItem('WATCHLIST')
-        this._retrieveData().then(data => {     
-            console.log('data',data);
-                   
+        this._retrieveData().then(data => {                        
             if(!data){
                 this._storeData(JSON.stringify([])) 
             }else if(data.length !== 0){
