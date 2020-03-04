@@ -7,17 +7,20 @@ target 'IMDb' do
 
   # Pods for IMDb
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  target 'IMDb-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+    pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
-  pod 'react-native-youtube', :path => '../node_modules/react-native-youtube'
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+    pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+    pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
 
-  pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
-
-  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+  end
 
   target 'IMDbTests' do
     inherit! :search_paths

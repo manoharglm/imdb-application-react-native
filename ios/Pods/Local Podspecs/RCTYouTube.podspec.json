@@ -1,6 +1,6 @@
 {
-  "name": "react-native-youtube",
-  "version": "1.1.0",
+  "name": "RCTYouTube",
+  "version": "2.0.0",
   "summary": "A <YouTube/> component for React Native.",
   "homepage": "https://github.com/inProgress-team/react-native-youtube#readme",
   "license": "MIT",
@@ -10,23 +10,20 @@
     }
   },
   "platforms": {
-    "ios": "7.0"
+    "ios": "9.0"
   },
   "source": {
     "git": "https://github.com/inProgress-team/react-native-youtube.git",
-    "tag": "v1.1.0"
+    "tag": "v2.0.0"
   },
-  "source_files": [
-    "RCTYouTube*.{h,m}",
-    "YTPlayerView/YTPlayerView.{h,m}"
-  ],
+  "source_files": "RCTYouTube*.{h,m}",
   "preserve_paths": "*.js",
-  "resources": [
-    "assets/YTPlayerView-iframe-player.html"
-  ],
   "dependencies": {
     "React": [
 
+    ],
+    "YoutubePlayer-in-WKWebView": [
+      "~> 0.3.1"
     ]
   }
 }
