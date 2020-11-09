@@ -59,7 +59,7 @@ class TopTv extends Component {
                                 }
                                 source={
                                     {
-                                        uri: 'https://cdn1.iconfinder.com/data/icons/rcons-user-action/512/user-512.png'
+                                        uri: 'https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png'
                                     }
                                 }
                             />

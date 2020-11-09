@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { ScrollView, View, WebView,Dimensions, StyleSheet, ActivityIndicator, Text, Image } from 'react-native';
+import { ScrollView, View, Dimensions, StyleSheet, ActivityIndicator, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { getTvDetail } from '../store/actions'
 import CarouselPage from './CarouselPage';
 import WatchlistButton from './watchListButton'
 import CastCard from './CastCard'
+import { WebView } from 'react-native-webview';
 
 class TvShows extends Component {
     constructor(props) {
