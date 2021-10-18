@@ -1,0 +1,41 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "skipLegacyWorkersInjection": true,
+  "apps": {
+    "android": {
+      "build": "cd android && ./gradlew clean && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+      "type": "android.apk",
+      "binaryPath": "android/app/build/outputs/apk/release/app-release.apk"
+    },
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/IMDb.app",
+      "build": "xcodebuild -workspace ios/IMDb.xcworkspace -scheme IMDb -configuration Release -sdk iphonesimulator -derivedDataPath ios/build"
+    }
+  },
+  "devices": {
+    "emulator": {
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_4_API_28"
+      }
+    },
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 12 Pro Max"
+      }
+    }
+  },
+  "configurations": {
+    "android": {
+      "device": "emulator",
+      "app": "android"
+    },
+    "ios": {
+      "device": "simulator",
+      "app": "ios"
+    }
+  }
+}
