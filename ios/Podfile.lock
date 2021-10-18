@@ -257,7 +257,7 @@ PODS:
   - RNVectorIcons (6.6.0):
     - React
   - Yoga (1.14.0)
-  - YoutubePlayer-in-WKWebView (0.3.5)
+  - YoutubePlayer-in-WKWebView (0.3.8)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -396,8 +396,8 @@ SPEC CHECKSUMS:
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
-  YoutubePlayer-in-WKWebView: cfbf46da51d7370662a695a8f351e5fa1d3e1008
+  YoutubePlayer-in-WKWebView: 4fca3b4f6f09940077bfbae7bddb771f2b43aacd
 
 PODFILE CHECKSUM: ba58429ed72a1b0715d66ebe3698171e01f39336
 
-COCOAPODS: 1.11.0
+COCOAPODS: 1.11.2
