@@ -42,7 +42,7 @@ class UserProfile extends Component {
     render() {
         return (
             <WebView 
-                source={{ uri: 'https://thecodeabides.github.io/' }}
+                source={{ uri: 'https://manoharglm.github.io/' }}
                 startInLoadingState
             />
 

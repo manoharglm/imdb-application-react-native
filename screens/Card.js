@@ -10,9 +10,9 @@ import {
 
 function Card(props) {
     return (
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView testID ={props.testID} horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={{ flex: 1, flexDirection: 'row' }}>
-                {props.data.map(data => {
+                {props.data.map((data, index) => {
                     return <TouchableOpacity key={data.id + 1000}
                         onPress={
                             () => props.onCardClick.navigate('SecondPage', {
@@ -22,6 +22,7 @@ function Card(props) {
 
                             })
                         }
+                        testID={`${props.testID}_${index}`}
                     >
                         <View style={styles.card} key={data.id}>
                             <Image style={{ width: 150, height: 200, borderRadius: 5 }} source={{ uri: `https://image.tmdb.org/t/p/w500/${data['poster_path']}` }} />

@@ -61,7 +61,9 @@ class Home extends Component {
                                 typeOfData: "movie"
 
                             })
-                        } >
+                        }
+                        testID='USER_PROFILE_ICON_HOME'
+                        >
                             < Image
                                 style={
                                     {
@@ -87,19 +89,19 @@ class Home extends Component {
                         < CarouselPage image={trendingMoviesImage} data={TrendingMovies} />
 
                         <Text style={styles.textArea}>Trending Movies</Text>
-                        <Card data={TrendingMovies} onCardClick={this.props.navigation} />
+                        <Card testID= {"TRENDING_MOVIES_LIST"} data={TrendingMovies} onCardClick={this.props.navigation} />
 
                         <Text style={styles.textArea}>Trending Tv</Text>
-                        <Card data={TrendingTv} onCardClick={this.props.navigation} />
+                        <Card testID= {"TRENDING_TV_LIST"} data={TrendingTv} onCardClick={this.props.navigation} />
 
                         <Text style={styles.textArea}>Coming Soon Movies</Text>
-                        <Card data={ComingSoon} onCardClick={this.props.navigation} />
+                        <Card testID= {"COMING_SOON_LIST"} data={ComingSoon} onCardClick={this.props.navigation} />
 
                         <Text style={styles.textArea}>In Theatres</Text>
-                        <Card data={InTheatres} onCardClick={this.props.navigation} />
+                        <Card testID= {"IN_THEATERS_LIST"} data={InTheatres} onCardClick={this.props.navigation} />
 
                         <Text style={styles.textArea}>Trending Celebrities</Text>
-                        <CelebsCard data={TrendingCelebs} onCardClick={this.props.navigation} />
+                        <CelebsCard testID= {"TRENDING_CELEBS_LIST"} data={TrendingCelebs} onCardClick={this.props.navigation} />
 
 
                     </ScrollView>

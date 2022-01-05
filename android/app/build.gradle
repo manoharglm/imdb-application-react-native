@@ -131,6 +131,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
         versionName "2.0"
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     signingConfigs {
         release {
@@ -194,6 +196,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    androidTestImplementation('com.wix:detox:+')
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
@@ -214,6 +217,7 @@ dependencies {
         implementation jscFlavor
     }
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
+    androidTestImplementation('com.wix:detox:+')
 }
 
 apply plugin: 'com.google.gms.google-services' // <--- this should be the last line
